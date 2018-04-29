@@ -1,0 +1,57 @@
+git 笔记
+
+git init
+git add
+git commit -m "备注"
+git status 
+git diff
+git log
+git reset --hard 版本号（HEAD HEAD^ HEAD^^ HEAD-10 CommitID）
+git reflog
+git checkout -- file
+git reset HEAD file
+远端操作
+git remote add origin https://github.com/LiHao07/learngit.git
+git push origin <branch name>
+git clone https://github.com/LiHao07/learngit.git
+分支
+查看分支：git branch
+创建分支：git branch <name>
+切换分支：git checkout <name>
+创建+切换分支：git checkout -b <name>
+合并某分支到当前分支：git merge <name>
+删除、强行删除分支：git branch -d <name>  git branch -D <name>
+查看分支合并图：git log --graph --pretty=oneline --abbrev-commit
+git merge --no-ff <name> 不使用fast forward
+git stash
+git stash list
+git stash apply
+git stash drop
+git stash pop
+git stash apply stash@{0}
+
+1.git push origin branch-name
+2.git pull
+3.git push origin branch-name
+4.git branch --set-upstream branch-name origin/branch-name
+
+因此，多人协作的工作模式通常是这样：
+1.首先，可以试图用git push origin branch-name推送自己的修改；
+2.如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+3.如果合并有冲突，则解决冲突，并在本地提交；
+4.没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！
+注:如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name
+标签
+git tag <tagname>
+git tag
+git tag <tagname> [-m "xxx"] <commit ID>
+git show <tagname>
+git tag -d v0.1 删除
+git push origin <tagname>/--tags 推送到远端
+git push origin :refs/tags/v0.9 删除远程标签
+
+别名
+git config --global alias.st status
+git config --global alias.unstage 'reset HEAD'
+仓库的Git配置文件:cat .git/config 
+用户的Git配置文件:用户主目录下 cat .gitconfig
